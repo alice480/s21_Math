@@ -2,8 +2,12 @@
 
 int main(void) {
   int failed = 0;
-  Suite *s21_math_test[] = {test_s21_sin(),  test_s21_cos(),  test_s21_tan(),
-                            test_s21_asin(), test_s21_acos(), NULL};
+
+  Suite *s21_math_test[] = {
+      test_s21_sin(),  test_s21_cos(), test_s21_tan(), test_s21_asin(),
+      test_s21_acos(), test_log(),     test_abs(),     test_fabs(),
+      test_atan(),     test_ceil(),    test_exp(),     test_fmod(),
+      test_sqrt(),     test_floor(),   test_pow(),     NULL};
 
   for (int i = 0; s21_math_test[i] != NULL; i++) {  // (&& failed == 0)
     SRunner *runner = srunner_create(s21_math_test[i]);

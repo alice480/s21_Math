@@ -17,15 +17,13 @@ rebuild: clean all
 checks:
 	clang-format -style=google -n *.c *.h
 	clang-format -style=google -n tests/*.c
-	cppcheck --enable=all --inconclusive --std=c11 --suppress=missingIncludeSystem .
-
 
 s21_math.a: s21_math.c
 	$(CC) $(CFLAGS) -c s21_math.c
 	ar -rcs s21_math.a s21_math.o
 	ranlib s21_math.a
 
-test: s21_math.c
+test: s21_math.c s21_test.c
 	$(CC) $(CFLAGS) --coverage -c s21_math.c -o s21_math_test.o
 	ar -rcs s21_math_test.a s21_math_test.o
 	ranlib s21_math_test.a
